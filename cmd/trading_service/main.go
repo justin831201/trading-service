@@ -2,18 +2,20 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
+	order_service "github.com/justin831201/trading-service/app/order-service"
+	log "github.com/sirupsen/logrus"
+	"os"
 )
 
-func setupRouter() *gin.Engine {
-	r := gin.Default()
-	r.GET("/", func(context *gin.Context) {
-		context.String(http.StatusOK, "ok")
-	})
-	return r
-}
-
 func main() {
-	r := setupRouter()
-	r.Run(":8080")
+	log.SetFormatter(&log.TextFormatter{FullTimestamp: true})
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.DebugLevel)
+
+	engine := gin.New()
+	order_service.RegisterRoutes(engine)
+	err := engine.Run(":8080")
+	if err != nil {
+		return
+	}
 }
