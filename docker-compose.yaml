@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  order_service:
+    build:
+      context: .
+      args:
+        - app_name=order-service
+    image: order-service
+    volumes:
+      - ./config/order-service/config.yaml:/srv/trading-service/config/config.yaml
+    ports:
+      - "8080:8080"
+    command:
+      - run_trading_service

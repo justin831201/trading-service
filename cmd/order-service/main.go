@@ -1,16 +1,20 @@
 package main
 
 import (
+	"flag"
 	"github.com/gin-gonic/gin"
 	order_service "github.com/justin831201/trading-service/app/order-service"
-	log "github.com/sirupsen/logrus"
-	"os"
+	"github.com/justin831201/trading-service/pkg/logger"
 )
 
 func main() {
-	log.SetFormatter(&log.TextFormatter{FullTimestamp: true})
-	log.SetOutput(os.Stdout)
-	log.SetLevel(log.DebugLevel)
+	var configFile string
+	flag.StringVar(&configFile, "c", "", "Configuration file path.")
+	flag.Parse()
+
+	config := order_service.LoadConfig(configFile)
+
+	logger.SetupLogger(config.Logger)
 
 	engine := gin.New()
 	order_service.RegisterRoutes(engine)
