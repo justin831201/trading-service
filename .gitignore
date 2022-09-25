@@ -1,0 +1,17 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+
+# IDE generated files
+.idea/
+.vscode/
+
+# Local build files
+build/
+
+# test coverage results
+*.out
+
+# ignore all local config files except sample configs
+config/*/*.yaml
+!config/*/config-sample.yaml
