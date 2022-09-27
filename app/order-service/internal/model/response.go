@@ -1,4 +1,4 @@
-package model
+package order_model
 
 type ErrorMessage struct {
 	Status  int    `json:"status"`  // Ths status value would be same as status code

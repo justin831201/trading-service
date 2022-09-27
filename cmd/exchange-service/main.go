@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	service "github.com/justin831201/trading-service/app/order-service"
+	service "github.com/justin831201/trading-service/app/exchange-service"
 	"os"
 )
 

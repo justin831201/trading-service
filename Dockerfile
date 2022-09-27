@@ -11,15 +11,21 @@ FROM golang:1.19.1-alpine3.16 AS build-env
 ARG project_name
 ARG app_name
 
-COPY . /srv/$project_name/src
+RUN apk add build-base && mkdir -p /srv/$project_name/build
 
-WORKDIR /srv/$project_name
+WORKDIR /srv/$project_name/src
+
+COPY docker-entrypoint.sh ./
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+COPY ./pkg ./pkg
+COPY ./cmd/$app_name ./cmd/$app_name
+COPY ./app/$app_name ./app/$app_name
 
 # Compile the go executable file
-RUN apk add build-base \
-    && mkdir -p /srv/$project_name/build \
-    && cd /srv/$project_name/src \
-    && go build -o /srv/$project_name/build/$app_name -tags musl ./cmd/$app_name/*
+RUN go build -o /srv/$project_name/build/$app_name -tags musl ./cmd/$app_name/*
 
 # ===============================================================================
 # Stage 2: Build the runtime image

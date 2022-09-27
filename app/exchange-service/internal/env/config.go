@@ -1,13 +1,15 @@
-package order_service
+package env
 
 import (
+	"github.com/justin831201/trading-service/pkg/kafkautil"
 	"github.com/justin831201/trading-service/pkg/logger"
 	"gopkg.in/yaml.v3"
 	"os"
 )
 
 type Config struct {
-	Logger *logger.Config `yaml:"logger"`
+	Logger *logger.Config    `yaml:"logger"`
+	Kafka  *kafkautil.Config `yaml:"kafka"`
 }
 
 var config *Config

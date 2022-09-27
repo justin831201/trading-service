@@ -1,0 +1,10 @@
+address: 0.0.0.0:8081
+
+logger:
+  log_level: debug      # Available Modes: trace, debug, info, warn, error, fatal, panic
+
+kafka:
+  bootstrap_servers:
+    - "localhost:29092"
+  topic:
+    order_event: order_event
