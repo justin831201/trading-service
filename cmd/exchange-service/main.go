@@ -16,6 +16,5 @@ func main() {
 		os.Exit(0)
 	}
 
-	defer service.DisposeService()
 	service.StartService(configFile)
 }
