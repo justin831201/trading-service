@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Mock 2000 orders
+# Mock 10 orders
 for _ in $(seq 1 10)
 do
     user_id=$(uuidgen)

@@ -70,6 +70,14 @@ You can run the service by the following command.
 $ docker-compose up --build
 ```
 
+## Experiment
+You can use `/script/trading-client.sh` to generate some random orders.
+Ant Then you can watch `exchange-service` logs to ensure the algorithm are correct.
+
+```shell
+$ ./script/trading-client.sh
+```
+
 ## TODO List
 * Write OpenAPI Document
 * Implement graceful Shutdown
