@@ -80,7 +80,8 @@ $ ./script/trading-client.sh
 
 ## TODO List
 * Write OpenAPI Document
-* Implement graceful Shutdown
+* Implement graceful shutdown to ensure the shutdown process would not lose any order 
 * Implement notification microservice to send trading notification to user
 * Write unit and integration test cases
 * Implement CI/CD process
+* Implement health monitor
